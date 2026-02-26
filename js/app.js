@@ -1,6 +1,6 @@
 function appData() {
     return {
-        mascotUrl: 'https://image.qwenlm.ai/public_source/aa377faf-2bd5-4592-a691-3728616d1f46/13ad439c7-9083-425a-b25b-350aace08185.png',
+        mascotUrl: 'assets/images/profile.png',
         currentTab: 'home',
         adminTab: 'original',
         showPasswordModal: false,
@@ -10,7 +10,7 @@ function appData() {
 
         // Modal State
         showMangaModal: false,
-        selectedManga: {},
+        selectedManga: { links: [] },
 
         socialLinks: [
             { id: 1, title: 'Twitter / X', desc: 'Updates & Thoughts', url: '#', icon: '𝕏' },
@@ -181,7 +181,7 @@ function appData() {
 
         // Modal Logic
         openMangaModal(manga) {
-            this.selectedManga = manga;
+            this.selectedManga = { ...manga, links: manga.links || [] };
             this.showMangaModal = true;
         },
 
