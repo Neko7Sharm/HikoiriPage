@@ -40,9 +40,350 @@
   <!-- ตัดส่วน <style> และ <script> ออก -->
 
   <!-- ตัวอย่าง: Main Container -->
-  <div
-    class="w-full max-w-7xl bg-white/90 rounded-3xl shadow-2xl overflow-hidden relative min-h-[85vh] flex flex-col md:flex-row border-4 border-white">
-    <!-- ... เนื้อหาทั้งหมดจากไฟล์เดิม ... -->
+  <!-- Sidebar -->
+  <aside
+    class="w-full md:w-80 bg-brand-light/30 backdrop-blur-sm p-8 flex flex-col border-b md:border-b-0 md:border-r border-pink-100/50">
+    <div class="flex-shrink-0 mb-8 text-center md:text-left">
+      <div class="inline-block relative">
+        <div
+          class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white p-2 shadow-xl border-4 border-white mb-4 overflow-hidden mx-auto md:mx-0">
+          <img :src="mascotUrl" alt="Mascot"
+            class="w-full h-full object-cover rounded-full hover:scale-110 transition duration-500">
+        </div>
+        <div class="absolute -bottom-1 -right-1 bg-brand text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">
+          ONLINE</div>
+      </div>
+      <h1 class="text-3xl font-bold text-brand-dark tracking-tight">HikoiriBox</h1>
+      <p class="text-brand opacity-70 font-medium">Digital Creator & Translator</p>
+    </div>
+
+    <nav class="flex-grow space-y-2">
+      <button @click="currentTab = 'home'"
+        :class="currentTab === 'home' ? 'bg-brand text-white shadow-lg scale-105' : 'hover:bg-brand-light/50 text-brand-dark'"
+        class="w-full flex items-center space-x-3 px-6 py-4 rounded-2xl transition-all duration-300 font-semibold group">
+        <span class="text-xl rotate-0 group-hover:rotate-12 transition duration-300">🏠</span>
+        <span>Home</span>
+      </button>
+      <button @click="currentTab = 'original'"
+        :class="currentTab === 'original' ? 'bg-brand text-white shadow-lg scale-105' : 'hover:bg-brand-light/50 text-brand-dark'"
+        class="w-full flex items-center space-x-3 px-6 py-4 rounded-2xl transition-all duration-300 font-semibold group">
+        <span class="text-xl rotate-0 group-hover:rotate-12 transition duration-300">🖋️</span>
+        <span>Original Manga</span>
+      </button>
+      <button @click="currentTab = 'translation'"
+        :class="currentTab === 'translation' ? 'bg-brand text-white shadow-lg scale-105' : 'hover:bg-brand-light/50 text-brand-dark'"
+        class="w-full flex items-center space-x-3 px-6 py-4 rounded-2xl transition-all duration-300 font-semibold group">
+        <span class="text-xl rotate-0 group-hover:rotate-12 transition duration-300">📚</span>
+        <span>Translations</span>
+      </button>
+      <button @click="currentTab = 'devlog'"
+        :class="currentTab === 'devlog' ? 'bg-brand text-white shadow-lg scale-105' : 'hover:bg-brand-light/50 text-brand-dark'"
+        class="w-full flex items-center space-x-3 px-6 py-4 rounded-2xl transition-all duration-300 font-semibold group">
+        <span class="text-xl rotate-0 group-hover:rotate-12 transition duration-300">📰</span>
+        <span>Devlog & News</span>
+      </button>
+    </nav>
+
+    <div class="mt-8 pt-8 border-t border-pink-100/50">
+      <button @click="checkAdmin()"
+        class="w-full flex items-center justify-center space-x-2 px-6 py-3 rounded-2xl border-2 border-brand/20 text-brand hover:bg-brand hover:text-white transition-all duration-300 font-semibold">
+        <span x-show="!isAdmin">🔒 Admin Portal</span>
+        <span x-show="isAdmin">🔓 Console</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex flex-col h-[60vh] md:h-auto overflow-hidden bg-white/50 backdrop-blur-sm">
+    <header class="p-8 pb-4 flex justify-between items-center shrink-0">
+      <h2 class="text-4xl font-bold text-gray-800" x-text="getTabTitle()"></h2>
+      <div class="flex space-x-3">
+        <template x-for="social in socialLinks" :key="social.id">
+          <a :href="social.url" :title="social.title"
+            class="w-10 h-10 flex items-center justify-center rounded-xl bg-brand-light/30 text-brand hover:bg-brand hover:text-white transition-all duration-300 shadow-sm">
+            <span x-text="social.icon" class="font-bold"></span>
+          </a>
+        </template>
+      </div>
+    </header>
+
+    <div class="flex-grow overflow-y-auto p-8 pt-4 content-scroll">
+      <!-- Home Tab -->
+      <div x-show="currentTab === 'home'" x-transition class="space-y-8">
+        <div class="bg-gradient-to-br from-brand-light/40 to-white p-8 rounded-3xl border border-pink-100 shadow-inner">
+          <h3 class="text-2xl font-bold text-brand-dark mb-4">Welcome to my space! ✨</h3>
+          <p class="text-lg leading-relaxed opacity-80">
+            Hello! This is HikoiriBox's creative hub. I share my original manga projects, translation works, and
+            development updates here. Feel free to explore and check out my social media links for more updates!
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div @click="currentTab = 'original'"
+            class="p-6 bg-white rounded-2xl shadow-md border border-gray-50 hover:border-brand/30 transition-all cursor-pointer group">
+            <span class="text-4xl block mb-4 group-hover:scale-110 transition">🎨</span>
+            <h4 class="font-bold text-xl mb-2">Original Projects</h4>
+            <p class="text-gray-500">Discover characters and stories created from heart.</p>
+          </div>
+          <div @click="currentTab = 'devlog'"
+            class="p-6 bg-white rounded-2xl shadow-md border border-gray-50 hover:border-brand/30 transition-all cursor-pointer group">
+            <span class="text-4xl block mb-4 group-hover:scale-110 transition">💻</span>
+            <h4 class="font-bold text-xl mb-2">Recent News</h4>
+            <p class="text-gray-500">Read what I'm currently working on right now.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manga Tabs (Original & Translation) -->
+      <div x-show="currentTab === 'original' || currentTab === 'translation'" x-transition>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <template x-for="manga in (currentTab === 'original' ? originalMangas : translationMangas)" :key="manga.id">
+            <div @click="openMangaModal(manga)" class="group cursor-pointer">
+              <div
+                class="relative aspect-[2/3] rounded-2xl overflow-hidden shadow-lg border-2 border-transparent group-hover:border-brand transition-all duration-500">
+                <img :src="manga.cover" :alt="manga.title"
+                  class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                  <p class="text-white font-bold text-lg mb-1" x-text="manga.title"></p>
+                  <div class="flex gap-1">
+                    <template x-for="lang in manga.langs">
+                      <span class="bg-brand text-[10px] px-1.5 py-0.5 rounded font-bold text-white uppercase"
+                        x-text="lang"></span>
+                    </template>
+                  </div>
+                </div>
+                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md">
+                  <span class="text-xs font-bold text-brand" x-text="manga.status"></span>
+                </div>
+              </div>
+              <h4 class="mt-4 font-bold text-gray-800 text-lg group-hover:text-brand transition" x-text="manga.title">
+              </h4>
+              <p class="text-sm text-gray-500" x-text="manga.role"></p>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- Devlog Tab -->
+      <div x-show="currentTab === 'devlog'" x-transition class="space-y-6">
+        <template x-for="log in devlogs" :key="log.id">
+          <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-50 hover:shadow-lg transition group">
+            <div class="flex justify-between items-start mb-4">
+              <span
+                class="bg-brand-light/50 text-brand px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
+                x-text="log.category"></span>
+              <span class="text-gray-400 text-sm font-medium" x-text="log.date"></span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-brand transition" x-text="log.title"></h3>
+            <p class="text-gray-600 leading-relaxed" x-text="log.content"></p>
+          </div>
+        </template>
+      </div>
+
+      <!-- Admin Tab -->
+      <div x-show="currentTab === 'admin' && isAdmin" x-transition class="max-w-4xl mx-auto space-y-12">
+        <!-- Tabs for Admin -->
+        <div class="flex bg-gray-100 p-1.5 rounded-2xl self-start mb-4">
+          <button @click="adminTab = 'original'"
+            :class="adminTab === 'original' ? 'bg-white shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700'"
+            class="px-6 py-2 rounded-xl font-bold flex-1 transition">Original</button>
+          <button @click="adminTab = 'translation'"
+            :class="adminTab === 'translation' ? 'bg-white shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700'"
+            class="px-6 py-2 rounded-xl font-bold flex-1 transition">Translation</button>
+          <button @click="adminTab = 'news'"
+            :class="adminTab === 'news' ? 'bg-white shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700'"
+            class="px-6 py-2 rounded-xl font-bold flex-1 transition">News</button>
+        </div>
+
+        <div x-show="adminTab === 'original' || adminTab === 'translation'"
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Form Section -->
+          <div class="space-y-6 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+            <h3 class="text-xl font-bold text-gray-800 flex items-center space-x-2">
+              <span>📝 Management Form</span>
+            </h3>
+
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-bold text-gray-500 mb-2">Manga Title</label>
+                <input x-model="formManga.title" type="text" placeholder="Title"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand/20 focus:border-brand outline-none transition">
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-gray-500 mb-2">Cover URL</label>
+                <input x-model="formManga.cover" type="text" placeholder="https://..."
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand/20 focus:border-brand outline-none transition">
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-bold text-gray-500 mb-2">Status</label>
+                  <input x-model="formManga.status" type="text" placeholder="Ch. 1 / Ongoing"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand/20 focus:border-brand outline-none transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-bold text-gray-500 mb-2">Role</label>
+                  <input x-model="formManga.role" type="text" placeholder="Author / Editor"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand/20 focus:border-brand outline-none transition">
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-gray-500 mb-2">Languagues (TH, EN, JP...)</label>
+                <div class="flex gap-2 flex-wrap">
+                  <template x-for="lang in ['TH', 'EN', 'JP']">
+                    <button
+                      @click="formManga.langs.includes(lang) ? formManga.langs = formManga.langs.filter(l => l !== lang) : formManga.langs.push(lang)"
+                      :class="formManga.langs.includes(lang) ? 'bg-brand text-white border-brand' : 'bg-gray-50 text-gray-500 border-gray-200'"
+                      class="px-4 py-2 border rounded-xl font-bold transition" x-text="lang"></button>
+                  </template>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-gray-500 mb-2">Links (Format: Name | URL [One per
+                  line])</label>
+                <textarea x-model="formManga.linksRaw" rows="3"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand/20 focus:border-brand outline-none transition font-mono text-xs"></textarea>
+              </div>
+
+              <div class="flex space-x-3 pt-4">
+                <button @click="saveManga(adminTab)"
+                  class="flex-grow bg-brand text-white py-4 rounded-2xl font-bold shadow-lg shadow-brand/20 hover:bg-brand-dark transition-all duration-300">Save
+                  Project</button>
+                <button @click="clearForm()"
+                  class="px-8 bg-gray-100 text-gray-600 rounded-2xl font-bold hover:bg-gray-200 transition">Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- List Section -->
+          <div class="space-y-4">
+            <h3 class="text-xl font-bold text-gray-800">Current Projects</h3>
+            <div class="space-y-3">
+              <template x-for="m in (adminTab === 'original' ? originalMangas : translationMangas)" :key="m.id">
+                <div
+                  class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between group">
+                  <div class="flex items-center space-x-4">
+                    <img :src="m.cover" class="w-12 h-16 object-cover rounded-lg">
+                    <div>
+                      <p class="font-bold text-gray-800" x-text="m.title"></p>
+                      <p class="text-xs text-brand font-medium" x-text="m.status"></p>
+                    </div>
+                  </div>
+                  <div class="flex space-x-2">
+                    <button @click="editManga(m, adminTab)"
+                      class="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition">✏️</button>
+                    <button @click="deleteManga(m.id, adminTab)"
+                      class="p-2 text-red-500 hover:bg-red-50 rounded-lg transition">🗑️</button>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Admin -->
+        <div x-show="adminTab === 'news'" class="space-y-12">
+          <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 space-y-6">
+            <h3 class="text-xl font-bold text-gray-800">Post News/Devlog</h3>
+            <div class="space-y-4">
+              <input x-model="newDevlog.title" type="text" placeholder="Entry Title"
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-brand">
+              <textarea x-model="newDevlog.content" rows="4" placeholder="Content goes here..."
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-brand"></textarea>
+              <select x-model="newDevlog.category" class="w-full px-4 py-3 rounded-xl border border-gray-200">
+                <option>Devlog</option>
+                <option>News</option>
+                <option>Update</option>
+              </select>
+              <button @click="addDevlog()"
+                class="w-full bg-brand text-white py-4 rounded-2xl font-bold hover:bg-brand-dark transition shadow-lg shadow-brand/20">Post
+                Entry</button>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <template x-for="log in devlogs" :key="log.id">
+              <div class="bg-white p-6 rounded-2xl border border-gray-100 flex justify-between items-center group">
+                <div>
+                  <h4 class="font-bold text-gray-800" x-text="log.title"></h4>
+                  <p class="text-xs text-gray-400" x-text="log.date"></p>
+                </div>
+                <button @click="deleteDevlog(log.id)"
+                  class="p-2 text-red-500 hover:bg-red-50 rounded-lg opacity-0 group-hover:opacity-100 transition">Delete</button>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <button @click="logoutAdmin()"
+          class="w-full py-4 text-red-500 font-bold border-2 border-red-50 hover:bg-red-50 rounded-2xl transition">Sign
+          Out Admin</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Manga Modal -->
+  <div x-show="showMangaModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div @click="showMangaModal = false" class="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity"></div>
+    <div x-show="showMangaModal" x-transition.scale.90
+      class="relative bg-white w-full max-w-4xl rounded-[40px] overflow-hidden shadow-2xl flex flex-col md:flex-row">
+      <button @click="showMangaModal = false"
+        class="absolute top-6 right-6 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-black md:text-white flex items-center justify-center text-xl transition z-10 font-bold">✕</button>
+      <div class="w-full md:w-2/5 shrink-0 bg-gray-100 h-80 md:h-auto">
+        <img :src="selectedManga.cover" class="w-full h-full object-cover">
+      </div>
+      <div class="p-10 md:p-14 flex flex-col justify-between flex-grow">
+        <div>
+          <div class="flex gap-2 mb-4">
+            <template x-for="lang in selectedManga.langs">
+              <span class="bg-brand-light/50 text-brand px-3 py-1 rounded-full text-xs font-bold" x-text="lang"></span>
+            </template>
+          </div>
+          <h2 class="text-4xl font-bold text-gray-800 mb-2 leading-tight" x-text="selectedManga.title"></h2>
+          <p class="text-brand font-bold mb-6 text-lg" x-text="selectedManga.status"></p>
+          <div class="bg-gray-50 p-6 rounded-3xl border border-gray-100 mb-8">
+            <p class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">My Role</p>
+            <p class="text-gray-700 font-medium" x-text="selectedManga.role"></p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <p class="text-sm font-bold text-gray-800 mb-4 px-2">Read Online At:</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <template x-for="link in selectedManga.links">
+              <a :href="link.url" target="_blank"
+                class="flex items-center justify-between px-6 py-4 bg-brand text-white rounded-2xl font-bold hover:bg-brand-dark transition shadow-lg shadow-brand/10">
+                <span x-text="link.name"></span>
+                <span>↗</span>
+              </a>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Password Modal -->
+  <div x-show="showPasswordModal" x-cloak
+    class="fixed inset-0 z-[60] flex items-center justify-center p-4 overflow-hidden">
+    <div @click="showPasswordModal = false"
+      class="absolute inset-0 bg-brand-dark/20 backdrop-blur-3xl transition-opacity"></div>
+    <div x-show="showPasswordModal" x-transition.scale.90
+      class="relative bg-white w-full max-w-md p-10 rounded-[35px] shadow-2xl text-center">
+      <div
+        class="w-20 h-20 bg-brand-light/30 text-brand rounded-3xl flex items-center justify-center text-3xl mx-auto mb-6">
+        🔑</div>
+      <h3 class="text-2xl font-bold text-gray-800 mb-2">Access Portal</h3>
+      <p class="text-gray-500 mb-8 font-medium">Please enter your master password</p>
+      <input x-model="passwordInput" @keyup.enter="verifyPassword()" type="password" placeholder="••••••••"
+        class="w-full px-6 py-4 rounded-2xl border-2 border-gray-100 focus:border-brand focus:ring-0 outline-none text-center text-xl tracking-widest mb-4 transition">
+      <p x-show="loginError" class="text-red-500 text-sm font-bold mb-4">Invalid password, please try again.</p>
+      <button @click="verifyPassword()"
+        class="w-full bg-brand text-white py-4 rounded-2xl font-bold text-lg hover:bg-brand-dark shadow-xl shadow-brand/20 transition-all active:scale-95">Enter
+        Dashboard</button>
+      <button @click="showPasswordModal = false"
+        class="mt-4 text-gray-400 font-bold text-sm hover:text-gray-600">Cancel</button>
+    </div>
   </div>
 
   <!-- Local JS -->
