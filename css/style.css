@@ -1,0 +1,37 @@
+body {
+  font-family: 'Quicksand', 'Kanit', sans-serif;
+  background-color: #fce7f3;
+  background-image: radial-gradient(#fbcfe8 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+.content-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.content-scroll::-webkit-scrollbar-thumb {
+  background: #fbcfe8;
+  border-radius: 4px;
+}
+
+.content-scroll::-webkit-scrollbar-thumb:hover {
+  background: #f472b6;
+}

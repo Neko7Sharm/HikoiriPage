@@ -1,32 +1,52 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>My Profile</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 40px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HikoiriBox - Portfolio</title>
+
+  <!-- CDN Libraries -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Quicksand:wght@400;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              light: '#fbcfe8',
+              DEFAULT: '#ec4899',
+              dark: '#be185d',
+            }
+          }
+        }
+      }
     }
-    .card {
-      max-width: 600px;
-      margin: auto;
-      background: #fff;
-      padding: 24px;
-      border-radius: 12px;
-    }
-  </style>
+  </script>
 </head>
-<body>
-  <div class="card">
-    <h1>ชื่อของคุณ</h1>
-    <p>Web / Developer / Student</p>
-    <p>📧 email@example.com</p>
-    <p>
-      <a href="https://github.com/username">GitHub</a>
-    </p>
+
+<body class="min-h-screen flex items-center justify-center p-4 text-gray-700" x-data="appData()" x-init="initApp()">
+
+  <!-- ✅ เนื้อหา HTML ทั้งหมดวางที่นี่ (เหมือนต้นฉบับ) -->
+  <!-- ตัดส่วน <style> และ <script> ออก -->
+
+  <!-- ตัวอย่าง: Main Container -->
+  <div
+    class="w-full max-w-7xl bg-white/90 rounded-3xl shadow-2xl overflow-hidden relative min-h-[85vh] flex flex-col md:flex-row border-4 border-white">
+    <!-- ... เนื้อหาทั้งหมดจากไฟล์เดิม ... -->
   </div>
+
+  <!-- Local JS -->
+  <script src="js/app.js"></script>
 </body>
+
 </html>
