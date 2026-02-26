@@ -79,8 +79,16 @@ function appData() {
             }
         },
 
-        verifyPassword() {
-            if (this.passwordInput === 'Chocolate404') {
+        async hashString(str) {
+            const msgUint8 = new TextEncoder().encode(str);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        },
+
+        async verifyPassword() {
+            const hashedInput = await this.hashString(this.passwordInput);
+            if (hashedInput === 'b265bb672458990119d166eaf670e9192c48a4df78d73c233614f2e2b9826c58') {
                 this.isAdmin = true;
                 this.currentTab = 'admin';
                 this.showPasswordModal = false;
