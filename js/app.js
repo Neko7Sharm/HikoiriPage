@@ -66,8 +66,7 @@ function appData() {
                     { id: 1, title: 'New Game Dev Start!', content: 'Starting a new RPG project using Unity. Stay tuned!', category: 'Devlog', date: '2023-10-25' }
                 ];
             }
-            // If admin session is true, we don't automatically jump to admin tab unless clicked.
-            // But verify if it needs to be set.
+
         },
 
         checkAdmin() {
@@ -81,7 +80,7 @@ function appData() {
         },
 
         verifyPassword() {
-            if (this.passwordInput === 'admin123') {
+            if (this.passwordInput === 'Chocolate404') {
                 this.isAdmin = true;
                 this.currentTab = 'admin';
                 this.showPasswordModal = false;
