@@ -7,6 +7,8 @@ function appData() {
         passwordInput: '',
         loginError: false,
         isAdmin: false,
+
+        // Modal State
         showMangaModal: false,
         selectedManga: {},
 
@@ -21,6 +23,7 @@ function appData() {
         translationMangas: [],
         devlogs: [],
 
+        // Forms
         formManga: { id: null, title: '', cover: '', status: '', role: '', langs: [], linksRaw: '' },
         newDevlog: { title: '', content: '', category: 'Devlog' },
 
@@ -42,24 +45,29 @@ function appData() {
             const storedAdmin = localStorage.getItem('hb_admin_session');
 
             if (storedAdmin === 'true') this.isAdmin = true;
+
             if (storedOrig) this.originalMangas = JSON.parse(storedOrig);
             else {
                 this.originalMangas = [
                     { id: 1, title: 'Pink Magic School', cover: 'https://placehold.co/400x600/pink/white?text=Original+1', status: 'Ch. 5', role: 'Author', langs: ['TH', 'EN'], links: [{ name: 'Website A', url: '#' }, { name: 'Website B', url: '#' }] }
                 ];
             }
+
             if (storedTrans) this.translationMangas = JSON.parse(storedTrans);
             else {
                 this.translationMangas = [
                     { id: 1, title: 'Project A', cover: 'https://placehold.co/400x600/purple/white?text=Trans+1', status: 'Ongoing', role: 'Translator', langs: ['TH'], links: [{ name: 'MangaPlus', url: '#' }] }
                 ];
             }
+
             if (storedDevlogs) this.devlogs = JSON.parse(storedDevlogs);
             else {
                 this.devlogs = [
                     { id: 1, title: 'New Game Dev Start!', content: 'Starting a new RPG project using Unity. Stay tuned!', category: 'Devlog', date: '2023-10-25' }
                 ];
             }
+            // If admin session is true, we don't automatically jump to admin tab unless clicked.
+            // But verify if it needs to be set.
         },
 
         checkAdmin() {
@@ -95,6 +103,7 @@ function appData() {
             localStorage.setItem('hb_devlogs', JSON.stringify(this.devlogs));
         },
 
+        // Manga Logic
         parseLinks(raw) {
             if (!raw) return [];
             return raw.split('\n').map(line => {
@@ -110,6 +119,7 @@ function appData() {
 
         saveManga(type) {
             if (!this.formManga.title) return alert('Please enter a title');
+
             const links = this.parseLinks(this.formManga.linksRaw);
             const mangaData = {
                 id: this.formManga.id || Date.now(),
@@ -120,6 +130,7 @@ function appData() {
                 langs: this.formManga.langs,
                 links: links
             };
+
             if (type === 'original') {
                 if (this.formManga.id) {
                     const idx = this.originalMangas.findIndex(m => m.id === this.formManga.id);
@@ -135,6 +146,7 @@ function appData() {
                     this.translationMangas.unshift(mangaData);
                 }
             }
+
             this.clearForm();
             this.saveData();
             alert('Saved successfully!');
@@ -167,11 +179,13 @@ function appData() {
             this.formManga = { id: null, title: '', cover: '', status: '', role: '', langs: [], linksRaw: '' };
         },
 
+        // Modal Logic
         openMangaModal(manga) {
             this.selectedManga = manga;
             this.showMangaModal = true;
         },
 
+        // Devlog Logic
         addDevlog() {
             if (!this.newDevlog.title) return alert('Please enter a title');
             const today = new Date().toISOString().split('T')[0];
