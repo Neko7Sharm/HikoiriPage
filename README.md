@@ -1,1 +1,1 @@
-https://Neko7Sharm.github.io/HikoiPage/
+https://Neko7Sharm.github.io/HikoiriPage/
