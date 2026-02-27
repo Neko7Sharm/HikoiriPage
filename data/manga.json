@@ -1,0 +1,52 @@
+{
+  "originalMangas": [
+    {
+      "id": 1,
+      "title": "Pink Magic School",
+      "cover": "https://placehold.co/400x600/pink/white?text=Original+1",
+      "status": "Ch. 5",
+      "role": "Author",
+      "langs": [
+        "TH",
+        "EN"
+      ],
+      "links": [
+        {
+          "name": "Website A",
+          "url": "#"
+        },
+        {
+          "name": "Website B",
+          "url": "#"
+        }
+      ]
+    }
+  ],
+  "translationMangas": [
+    {
+      "id": 1,
+      "title": "Project A",
+      "cover": "https://placehold.co/400x600/purple/white?text=Trans+1",
+      "status": "Ongoing",
+      "role": "Translator",
+      "langs": [
+        "TH"
+      ],
+      "links": [
+        {
+          "name": "MangaPlus",
+          "url": "#"
+        }
+      ]
+    }
+  ],
+  "devlogs": [
+    {
+      "id": 1,
+      "title": "New Game Dev Start!",
+      "content": "Starting a new RPG project using Unity. Stay tuned!",
+      "category": "Devlog",
+      "date": "2023-10-25"
+    }
+  ]
+}

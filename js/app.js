@@ -23,6 +23,12 @@ function appData() {
         translationMangas: [],
         devlogs: [],
 
+        // GitHub Settings
+        ghToken: '',
+        ghRepo: '', // e.g. "Neko7Sharm/HikoiriPage"
+        ghBranch: 'main',
+        isSyncing: false,
+
         // Forms
         formManga: { id: null, title: '', cover: '', status: '', role: '', langs: [], linksRaw: '' },
         newDevlog: { title: '', content: '', category: 'Devlog' },
@@ -38,35 +44,38 @@ function appData() {
             return titles[this.currentTab] || 'Home';
         },
 
-        initApp() {
+        async initApp() {
+            // Load Admin Session
+            const storedAdmin = localStorage.getItem('hb_admin_session');
+            if (storedAdmin === 'true') this.isAdmin = true;
+
+            // Load GitHub Settings
+            this.ghToken = localStorage.getItem('hb_gh_token') || '';
+            this.ghRepo = localStorage.getItem('hb_gh_repo') || '';
+            this.ghBranch = localStorage.getItem('hb_gh_branch') || 'main';
+
+            // Try to load from LocalStorage first (for drafts)
             const storedOrig = localStorage.getItem('hb_original');
             const storedTrans = localStorage.getItem('hb_translation');
             const storedDevlogs = localStorage.getItem('hb_devlogs');
-            const storedAdmin = localStorage.getItem('hb_admin_session');
 
-            if (storedAdmin === 'true') this.isAdmin = true;
-
-            if (storedOrig) this.originalMangas = JSON.parse(storedOrig);
-            else {
-                this.originalMangas = [
-                    { id: 1, title: 'Pink Magic School', cover: 'https://placehold.co/400x600/pink/white?text=Original+1', status: 'Ch. 5', role: 'Author', langs: ['TH', 'EN'], links: [{ name: 'Website A', url: '#' }, { name: 'Website B', url: '#' }] }
-                ];
+            if (storedOrig && storedTrans && storedDevlogs) {
+                this.originalMangas = JSON.parse(storedOrig);
+                this.translationMangas = JSON.parse(storedTrans);
+                this.devlogs = JSON.parse(storedDevlogs);
+            } else {
+                // Fetch from JSON file
+                try {
+                    const response = await fetch('data/manga.json');
+                    const data = await response.json();
+                    this.originalMangas = data.originalMangas || [];
+                    this.translationMangas = data.translationMangas || [];
+                    this.devlogs = data.devlogs || [];
+                    this.saveData(); // Save to local storage
+                } catch (e) {
+                    console.error('Failed to load data/manga.json', e);
+                }
             }
-
-            if (storedTrans) this.translationMangas = JSON.parse(storedTrans);
-            else {
-                this.translationMangas = [
-                    { id: 1, title: 'Project A', cover: 'https://placehold.co/400x600/purple/white?text=Trans+1', status: 'Ongoing', role: 'Translator', langs: ['TH'], links: [{ name: 'MangaPlus', url: '#' }] }
-                ];
-            }
-
-            if (storedDevlogs) this.devlogs = JSON.parse(storedDevlogs);
-            else {
-                this.devlogs = [
-                    { id: 1, title: 'New Game Dev Start!', content: 'Starting a new RPG project using Unity. Stay tuned!', category: 'Devlog', date: '2023-10-25' }
-                ];
-            }
-
         },
 
         checkAdmin() {
@@ -108,6 +117,71 @@ function appData() {
             localStorage.setItem('hb_original', JSON.stringify(this.originalMangas));
             localStorage.setItem('hb_translation', JSON.stringify(this.translationMangas));
             localStorage.setItem('hb_devlogs', JSON.stringify(this.devlogs));
+        },
+
+        saveGhSettings() {
+            localStorage.setItem('hb_gh_token', this.ghToken);
+            localStorage.setItem('hb_gh_repo', this.ghRepo);
+            localStorage.setItem('hb_gh_branch', this.ghBranch);
+            alert('GitHub settings saved locally!');
+        },
+
+        async syncToGit() {
+            if (!this.ghToken || !this.ghRepo) {
+                return alert('Please configure GitHub Token and Repo in settings first!');
+            }
+
+            this.isSyncing = true;
+            const filePath = 'data/manga.json';
+            const apiUrl = `https://api.github.com/repos/${this.ghRepo}/contents/${filePath}`;
+
+            try {
+                // 1. Get current file data (to get SHA)
+                let sha = '';
+                const getRes = await fetch(apiUrl, {
+                    headers: { 'Authorization': `token ${this.ghToken}` }
+                });
+
+                if (getRes.ok) {
+                    const fileData = await getRes.json();
+                    sha = fileData.sha;
+                }
+
+                // 2. Prepare content
+                const contentObj = {
+                    originalMangas: this.originalMangas,
+                    translationMangas: this.translationMangas,
+                    devlogs: this.devlogs
+                };
+                const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(contentObj, null, 2))));
+
+                // 3. Update file
+                const putRes = await fetch(apiUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${this.ghToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Admin: Update manga data',
+                        content: contentBase64,
+                        sha: sha,
+                        branch: this.ghBranch
+                    })
+                });
+
+                if (putRes.ok) {
+                    alert('Sync successful! Git updated.');
+                } else {
+                    const err = await putRes.json();
+                    alert('Sync failed: ' + (err.message || 'Unknown error'));
+                }
+            } catch (e) {
+                console.error(e);
+                alert('An error occurred during sync.');
+            } finally {
+                this.isSyncing = false;
+            }
         },
 
         // Manga Logic
@@ -156,7 +230,7 @@ function appData() {
 
             this.clearForm();
             this.saveData();
-            alert('Saved successfully!');
+            alert('Saved to draft! Don\'t forget to Sync to GitHub.');
         },
 
         editManga(manga, type) {
@@ -205,7 +279,7 @@ function appData() {
             });
             this.newDevlog = { title: '', content: '', category: 'Devlog' };
             this.saveData();
-            alert('Posted successfully!');
+            alert('Saved to draft! Don\'t forget to Sync to GitHub.');
         },
 
         deleteDevlog(id) {
