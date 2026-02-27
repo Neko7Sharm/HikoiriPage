@@ -470,26 +470,20 @@
               </h3>
               <div class="space-y-4">
                 <div>
-                  <label class="text-xs font-bold text-gray-500 mb-1 block">GitHub Personal Access Token</label>
+                  <label class="text-xs font-bold text-gray-500 mb-1 block">GitHub Personal Access Token (PAT)</label>
                   <input x-model="ghToken" type="password" placeholder="ghp_xxxxxxxxxxxx"
                     class="w-full p-3 border rounded-xl text-sm focus:outline-none focus:border-indigo-500">
-                  <p class="text-[10px] text-gray-400 mt-1">Token must have 'repo' or 'Contents' write permission.
-                    Stored
-                    locally in your browser.</p>
+                  <p class="text-[10px] text-gray-400 mt-1">ใส่แค่ Token ที่สร้างจาก GitHub (`ghp_...`)
+                    แล้วกดบันทึกได้เลยครับ (ระบบจะจำชื่อ Repository ให้เอง)</p>
                 </div>
-                <div>
-                  <label class="text-xs font-bold text-gray-500 mb-1 block">Repository (Owner/Repo)</label>
-                  <input x-model="ghRepo" type="text" placeholder="Neko7Sharm/HikoiriPage"
-                    class="w-full p-3 border rounded-xl text-sm focus:outline-none focus:border-indigo-500">
-                </div>
-                <div>
-                  <label class="text-xs font-bold text-gray-500 mb-1 block">Branch</label>
-                  <input x-model="ghBranch" type="text" placeholder="main"
-                    class="w-full p-3 border rounded-xl text-sm focus:outline-none focus:border-indigo-500">
+                <!-- Hidden inputs for repo/branch but kept in model -->
+                <div class="hidden">
+                  <input x-model="ghRepo" type="hidden">
+                  <input x-model="ghBranch" type="hidden">
                 </div>
                 <button @click="saveGhSettings()"
-                  class="w-full bg-indigo-500 text-white py-3 rounded-xl text-sm font-bold hover:bg-indigo-600 transition-colors shadow-md">Save
-                  Git Settings Locally</button>
+                  class="w-full bg-indigo-500 text-white py-3 rounded-xl text-sm font-bold hover:bg-indigo-600 transition-colors shadow-md">บันทึก
+                  Token</button>
               </div>
               <div class="mt-6 p-4 bg-amber-50 rounded-xl border border-amber-100 text-xs text-amber-800">
                 <p class="font-bold mb-1">How it works:</p>

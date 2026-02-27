@@ -51,7 +51,7 @@ function appData() {
 
             // Load GitHub Settings
             this.ghToken = localStorage.getItem('hb_gh_token') || '';
-            this.ghRepo = localStorage.getItem('hb_gh_repo') || '';
+            this.ghRepo = localStorage.getItem('hb_gh_repo') || 'Neko7Sharm/HikoiriPage';
             this.ghBranch = localStorage.getItem('hb_gh_branch') || 'main';
 
             // Try to load from LocalStorage first (for drafts)
@@ -120,10 +120,11 @@ function appData() {
         },
 
         saveGhSettings() {
+            if (!this.ghToken) return alert('กรุณาใส่ Token ก่อนบันทึกครับ');
             localStorage.setItem('hb_gh_token', this.ghToken);
             localStorage.setItem('hb_gh_repo', this.ghRepo);
             localStorage.setItem('hb_gh_branch', this.ghBranch);
-            alert('GitHub settings saved locally!');
+            alert('บันทึก Token เรียบร้อยแล้วครับ! (เก็บไว้ใน Browser ของคุณ)');
         },
 
         async syncToGit() {
