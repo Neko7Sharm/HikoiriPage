@@ -13,7 +13,7 @@ function appData() {
         selectedManga: { links: [] },
 
         socialLinks: [
-            { id: 1, title: 'Facebook', desc: 'Main Page', url: 'https://www.facebook.com/profile.php?id=61585433472527', icon: 'T' },
+            { id: 1, title: 'Facebook', desc: 'Main Page', url: 'https://www.facebook.com/profile.php?id=61585433472527', icon: 'F' },
             { id: 2, title: 'Koko Translate', desc: 'Facebook Page', url: 'https://www.facebook.com/HikoiriNeko', icon: 'T' },
             { id: 3, title: 'Pixiv', desc: 'Art Gallery', url: 'https://www.pixiv.net/en/users/118972536', icon: '🎨' },
             { id: 4, title: 'Patreon', desc: 'Exclusive Content', url: 'https://www.patreon.com/c/HikoiriBox', icon: '💎' }
