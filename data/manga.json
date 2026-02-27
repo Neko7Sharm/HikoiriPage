@@ -2,7 +2,7 @@
   "originalMangas": [
     {
       "id": 1,
-      "title": "Pink Magic School",
+      "title": "Pink Magic School abc",
       "cover": "https://placehold.co/400x600/pink/white?text=Original+1",
       "status": "Ch. 5",
       "role": "Author",
@@ -42,11 +42,18 @@
   ],
   "devlogs": [
     {
-      "id": 1,
-      "title": "New Game Dev Start!",
-      "content": "Starting a new RPG project using Unity. Stay tuned!",
+      "id": 1772152141774,
+      "title": "Drop previously translated works",
+      "content": "ทาง Hikoiri ขอ ดรอปงานแปลทั้งหมดที่เคยแปลก่อนหน้านี้ โดยจะไม่ดำเนินการแปลต่อ\nทั้งนี้ งานแปลดังกล่าวไม่ได้ถูกลบออก แต่จะ ขอหยุดไว้ชั่วคราว เพื่อมุ่งเน้นไปที่งานแปลและโปรเจกต์ปัจจุบันเป็นหลัก\n\nHikoiripage will drop all previously translated works and will not continue translating them further.\nThe existing translations will remain available; however, they will be put on hold as we will be focusing primarily on current projects and ongoing works.",
+      "category": "Update",
+      "date": "2026-02-27"
+    },
+    {
+      "id": 1772151707198,
+      "title": "Test New Website",
+      "content": "Test webpage...",
       "category": "Devlog",
-      "date": "2023-10-25"
+      "date": "2026-02-27"
     }
   ]
 }
