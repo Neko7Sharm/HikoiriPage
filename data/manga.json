@@ -60,6 +60,13 @@
   ],
   "devlogs": [
     {
+      "id": 1772169268953,
+      "title": "Test",
+      "content": "Testg",
+      "category": "Devlog",
+      "date": "2026-02-27"
+    },
+    {
       "id": 1772152141774,
       "title": "Drop previously translated works",
       "content": "ทาง Hikoiri ขอ ดรอปงานแปลทั้งหมดที่เคยแปลก่อนหน้านี้ โดยจะไม่ดำเนินการแปลต่อ\nทั้งนี้ งานแปลดังกล่าวไม่ได้ถูกลบออก แต่จะ ขอหยุดไว้ชั่วคราว เพื่อมุ่งเน้นไปที่งานแปลและโปรเจกต์ปัจจุบันเป็นหลัก\n\nHikoiripage will drop all previously translated works and will not continue translating them further.\nThe existing translations will remain available; however, they will be put on hold as we will be focusing primarily on current projects and ongoing works.",
