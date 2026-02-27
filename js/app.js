@@ -31,14 +31,14 @@ function appData() {
 
         // Forms
         formManga: { id: null, title: '', cover: '', status: '', role: '', langs: [], linksRaw: '' },
-        newDevlog: { title: '', content: '', category: 'Devlog' },
+        newDevlog: { title: '', content: '', category: 'Update' },
 
         getTabTitle() {
             const titles = {
                 'home': 'Home',
                 'original': 'Original Manga',
                 'translation': 'Translations',
-                'devlog': 'Devlog & News',
+                'devlog': 'Updates & Announcements',
                 'admin': 'Admin'
             };
             return titles[this.currentTab] || 'Home';
@@ -278,7 +278,7 @@ function appData() {
                 category: this.newDevlog.category,
                 date: today
             });
-            this.newDevlog = { title: '', content: '', category: 'Devlog' };
+            this.newDevlog = { title: '', content: '', category: 'Update' };
             this.saveData();
             alert('Saved to draft! Don\'t forget to Sync to GitHub.');
         },
