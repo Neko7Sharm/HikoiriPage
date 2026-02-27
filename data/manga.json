@@ -1,59 +1,102 @@
 {
   "originalMangas": [
     {
-      "id": 1772169178768,
-      "title": "aaa",
-      "cover": "https://placehold.co/400x600/gray/white?text=No+Image",
-      "status": "",
-      "role": "",
-      "langs": [],
-      "links": []
-    },
-    {
-      "id": 1772169162824,
-      "title": "aaa",
-      "cover": "https://placehold.co/400x600/gray/white?text=No+Image",
-      "status": "",
-      "role": "",
-      "langs": [],
-      "links": []
-    },
-    {
-      "id": 1,
-      "title": "Pink Magic School a",
-      "cover": "https://placehold.co/400x600/pink/white?text=Original+1",
-      "status": "Ch. 5",
-      "role": "Author",
+      "id": 1772180842454,
+      "title": "Umamusume with Hikoiri",
+      "cover": "https://scontent.fbkk23-1.fna.fbcdn.net/v/t39.30808-6/606045203_122106710487181115_7319189526437827234_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=dd6889&_nc_ohc=yrXK9ifysKkQ7kNvwE1emVd&_nc_oc=AdnNa_Ehq2Jnu9wF8W-3klgnoclCPkHyurUN87m3WyhPfsh7Z9MUldZZ34fKuMW61Ow&_nc_zt=23&_nc_ht=scontent.fbkk23-1.fna&_nc_gid=MIqU0bWIkrwSRcJCI5krfg&oh=00_AfsmzeVk4TUZbY_Z0RdcuINSsRmB2Ixf0RQSp1nt-DCYaQ&oe=69A74023",
+      "status": "Ch.6",
+      "role": "On going",
       "langs": [
         "TH",
         "EN"
       ],
       "links": [
         {
-          "name": "Website A",
-          "url": "#"
+          "name": "Pixiv",
+          "url": "https://www.pixiv.net/user/118972536/series/318617"
         },
         {
-          "name": "Website B",
-          "url": "#"
+          "name": "Facebook TH",
+          "url": "https://www.facebook.com/media/set/?set=a.122106710817181115&type=3"
+        },
+        {
+          "name": "Facebook EN",
+          "url": "https://www.facebook.com/media/set/?set=a.122106711195181115&type=3"
+        }
+      ]
+    },
+    {
+      "id": 1772180191007,
+      "title": "ChaosZeroNightmare with Hikoiri",
+      "cover": "https://scontent.fbkk23-1.fna.fbcdn.net/v/t39.30808-6/607960117_122106706869181115_7888072925630775316_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=dd6889&_nc_ohc=aVemfzrUTEwQ7kNvwGJD8Em&_nc_oc=Adng-A9QqakKvRa7aanvBQixMJkXbI1W3k2ymtsHruvq_fS25N2nWN-WuBbXu2jTfsA&_nc_zt=23&_nc_ht=scontent.fbkk23-1.fna&_nc_gid=uXDuWw4B_H_ZyB3MmZlBKA&oh=00_AftOILn-zeu9OG4mIGS-tr4sumFKG03lUO5sp_FhwC-KbA&oe=69A73240",
+      "status": "Ch.5",
+      "role": "On going",
+      "langs": [
+        "TH",
+        "EN"
+      ],
+      "links": [
+        {
+          "name": "Pixiv",
+          "url": "https://www.pixiv.net/user/118972536/series/317119"
+        },
+        {
+          "name": "Facebook TH",
+          "url": "https://www.facebook.com/media/set/?set=a.122106707883181115&type=3"
+        },
+        {
+          "name": "Facebook EN",
+          "url": "https://www.facebook.com/media/set/?set=a.122106709449181115&type=3"
         }
       ]
     }
   ],
   "translationMangas": [
     {
-      "id": 1,
-      "title": "Project A",
-      "cover": "https://placehold.co/400x600/purple/white?text=Trans+1",
-      "status": "Ongoing",
-      "role": "Translator",
+      "id": 1772179839055,
+      "title": "Netoge no Seibetsu wa Daitai Mitame de Damasareru",
+      "cover": "https://scontent.fbkk23-1.fna.fbcdn.net/v/t39.30808-6/481955025_1056935283118783_8117371490780879748_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=dd6889&_nc_ohc=CeWZfnnA7RsQ7kNvwEIa_DV&_nc_oc=AdmILtymm8Heu3alYZfXCrrqRJpfs3kIBwClKzhfffbNjSaH9FI_SPUonD3CK2OqGIQ&_nc_zt=23&_nc_ht=scontent.fbkk23-1.fna&_nc_gid=0Xb2pm7gGDvViUJ7cvpOVw&oh=00_AfvjDSmDTmNf61lSOyr7LKFcc53fIozSnR4yioD9Qv_Vhg&oe=69A73A30",
+      "status": "Drop",
+      "role": "Ch.4",
       "langs": [
         "TH"
       ],
       "links": [
         {
-          "name": "MangaPlus",
-          "url": "#"
+          "name": "Nekopost",
+          "url": "https://www.nekopost.net/manga/13224"
+        }
+      ]
+    },
+    {
+      "id": 1772179687494,
+      "title": "Ichaicha Suru to Okane ga Waichau 2-ri no Hanashi",
+      "cover": "https://www.osemocphoto.com/collectManga/13185/13185_cover.jpg?ver=1",
+      "status": "Drop",
+      "role": "Ch.10",
+      "langs": [
+        "TH"
+      ],
+      "links": [
+        {
+          "name": "Nekopost",
+          "url": "https://www.nekopost.net/manga/13185"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Gangan Nyoui ga Mashite Iku Las Boss Sen no Healer-chan",
+      "cover": "https://www.osemocphoto.com/collectManga/12499/12499_cover.jpg",
+      "status": "complete",
+      "role": "One-Shot",
+      "langs": [
+        "TH"
+      ],
+      "links": [
+        {
+          "name": "Facebook",
+          "url": "https://www.facebook.com/media/set?set=a.565956562216660"
         }
       ]
     }
