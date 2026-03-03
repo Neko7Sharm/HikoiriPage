@@ -60,6 +60,11 @@ function appData() {
             // Load Age Verification
             this.isUserAdult = localStorage.getItem('hb_is_adult') === 'true';
 
+            // Load from LocalStorage first for instant view
+            const storedOrig = localStorage.getItem('hb_original');
+            const storedTrans = localStorage.getItem('hb_translation');
+            const storedDevlogs = localStorage.getItem('hb_devlogs');
+
             if (storedOrig) this.originalMangas = JSON.parse(storedOrig);
             if (storedTrans) this.translationMangas = JSON.parse(storedTrans);
             if (storedDevlogs) this.devlogs = JSON.parse(storedDevlogs);
