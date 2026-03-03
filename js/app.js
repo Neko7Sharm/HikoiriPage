@@ -10,7 +10,10 @@ function appData() {
 
         // Modal State
         showMangaModal: false,
+        showAgeModal: false,
+        isUserAdult: false,
         selectedManga: { links: [] },
+        pendingManga: null,
 
         socialLinks: [
             { id: 1, title: 'Facebook', desc: 'Main Page', url: 'https://www.facebook.com/profile.php?id=61585433472527', icon: 'F' },
@@ -30,7 +33,7 @@ function appData() {
         isSyncing: false,
 
         // Forms
-        formManga: { id: null, title: '', cover: '', status: '', role: '', langs: [], linksRaw: '' },
+        formManga: { id: null, title: '', cover: '', status: '', role: '', langs: [], linksRaw: '', is18Plus: false },
         newDevlog: { title: '', content: '', category: 'Update' },
 
         getTabTitle() {
@@ -53,6 +56,9 @@ function appData() {
             this.ghToken = localStorage.getItem('hb_gh_token') || '';
             this.ghRepo = localStorage.getItem('hb_gh_repo') || 'Neko7Sharm/HikoiriPage';
             this.ghBranch = localStorage.getItem('hb_gh_branch') || 'main';
+
+            // Load Age Verification
+            this.isUserAdult = localStorage.getItem('hb_is_adult') === 'true';
 
             // Try to load from LocalStorage first (for drafts)
             const storedOrig = localStorage.getItem('hb_original');
@@ -121,7 +127,9 @@ function appData() {
 
         saveGhSettings() {
             if (!this.ghToken) return alert('กรุณาใส่ Token ก่อนบันทึกครับ');
-            localStorage.setItem('hb_gh_token', this.ghToken);
+            const trimmedToken = this.ghToken.trim();
+            this.ghToken = trimmedToken; // Update model
+            localStorage.setItem('hb_gh_token', trimmedToken);
             localStorage.setItem('hb_gh_repo', this.ghRepo);
             localStorage.setItem('hb_gh_branch', this.ghBranch);
             alert('บันทึก Token เรียบร้อยแล้วครับ! (เก็บไว้ใน Browser ของคุณ)');
@@ -137,10 +145,11 @@ function appData() {
             const apiUrl = `https://api.github.com/repos/${this.ghRepo}/contents/${filePath}`;
 
             try {
+                const token = this.ghToken.trim();
                 // 1. Get current file data (to get SHA)
                 let sha = '';
                 const getRes = await fetch(apiUrl, {
-                    headers: { 'Authorization': `token ${this.ghToken}` }
+                    headers: { 'Authorization': `token ${token}` }
                 });
 
                 if (getRes.ok) {
@@ -160,7 +169,7 @@ function appData() {
                 const putRes = await fetch(apiUrl, {
                     method: 'PUT',
                     headers: {
-                        'Authorization': `token ${this.ghToken}`,
+                        'Authorization': `token ${token}`,
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
@@ -210,7 +219,8 @@ function appData() {
                 status: this.formManga.status,
                 role: this.formManga.role,
                 langs: this.formManga.langs,
-                links: links
+                links: links,
+                is18Plus: this.formManga.is18Plus
             };
 
             if (type === 'original') {
@@ -242,7 +252,8 @@ function appData() {
                 status: manga.status,
                 role: manga.role || '',
                 langs: [...manga.langs],
-                linksRaw: this.formatLinksRaw(manga.links)
+                linksRaw: this.formatLinksRaw(manga.links),
+                is18Plus: manga.is18Plus || false
             };
             document.querySelector('.content-scroll').scrollTop = 0;
         },
@@ -258,13 +269,28 @@ function appData() {
         },
 
         clearForm() {
-            this.formManga = { id: null, title: '', cover: '', status: '', role: '', langs: [], linksRaw: '' };
+            this.formManga = { id: null, title: '', cover: '', status: '', role: '', langs: [], linksRaw: '', is18Plus: false };
         },
 
         // Modal Logic
         openMangaModal(manga) {
+            if (manga.is18Plus && !this.isUserAdult) {
+                this.pendingManga = manga;
+                this.showAgeModal = true;
+                return;
+            }
             this.selectedManga = { ...manga, links: manga.links || [] };
             this.showMangaModal = true;
+        },
+
+        confirmAge() {
+            this.isUserAdult = true;
+            localStorage.setItem('hb_is_adult', 'true');
+            this.showAgeModal = false;
+            if (this.pendingManga) {
+                this.openMangaModal(this.pendingManga);
+                this.pendingManga = null;
+            }
         },
 
         // Devlog Logic

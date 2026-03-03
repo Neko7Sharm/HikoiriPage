@@ -175,7 +175,13 @@
                   </div>
                 </div>
                 <div class="p-4 flex-1 flex flex-col">
-                  <h3 class="font-bold text-gray-800 line-clamp-2" x-text="manga.title"></h3>
+                  <div class="flex justify-between items-start">
+                    <h3 class="font-bold text-gray-800 line-clamp-2" x-text="manga.title"></h3>
+                    <template x-if="manga.is18Plus">
+                      <span
+                        class="bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded ml-2 shrink-0">18+</span>
+                    </template>
+                  </div>
                   <p class="text-xs text-pink-500 font-medium mt-1" x-text="manga.status"></p>
                   <div class="mt-2 flex gap-1 flex-wrap">
                     <template x-for="lang in manga.langs" :key="lang">
@@ -206,7 +212,13 @@
                   </div>
                 </div>
                 <div class="p-4 flex-1 flex flex-col">
-                  <h3 class="font-bold text-gray-800 line-clamp-2" x-text="manga.title"></h3>
+                  <div class="flex justify-between items-start">
+                    <h3 class="font-bold text-gray-800 line-clamp-2" x-text="manga.title"></h3>
+                    <template x-if="manga.is18Plus">
+                      <span
+                        class="bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded ml-2 shrink-0">18+</span>
+                    </template>
+                  </div>
                   <p class="text-xs text-indigo-500 font-medium mt-1" x-text="manga.role"></p>
                   <div class="mt-2 flex gap-1 flex-wrap">
                     <template x-for="lang in manga.langs" :key="lang">
