@@ -71,7 +71,7 @@
     {
       "id": 1772179687494,
       "title": "Ichaicha Suru to Okane ga Waichau 2-ri no Hanashi",
-      "cover": "https://www.osemocphoto.com/collectManga/13185/13185_cover.jpg?ver=1",
+      "cover": "https://www.osemocphoto.com/collectManga/13185/140819/140819_20230825200342_1.jpg",
       "status": "Drop",
       "role": "Ch.10",
       "langs": [
@@ -87,7 +87,7 @@
     {
       "id": 1,
       "title": "Gangan Nyoui ga Mashite Iku Las Boss Sen no Healer-chan",
-      "cover": "https://www.osemocphoto.com/collectManga/12499/12499_cover.jpg",
+      "cover": "https://scontent.fbkk23-1.fna.fbcdn.net/v/t39.30808-6/480672980_1045880144224297_656918578674194208_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=dd6889&_nc_ohc=DAKnKQ-Q5WkQ7kNvwHyq27s&_nc_oc=AdnhRiEkdh6fyysPxFSbJBT9e6XZCKFKWoLX9N2imTq3xedJcHEAwBoq8TeKu9b9IME&_nc_zt=23&_nc_ht=scontent.fbkk23-1.fna&_nc_gid=qd-ft1BUfSiXqTLZgqKQ_w&_nc_ss=8&oh=00_AfxJ4RTItVcevQ-KrPnnZ5Sq3ETkcgVJjWK3txtPgAycGQ&oe=69AD27C8",
       "status": "complete",
       "role": "One-Shot",
       "langs": [
@@ -98,7 +98,8 @@
           "name": "Facebook",
           "url": "https://www.facebook.com/media/set?set=a.565956562216660"
         }
-      ]
+      ],
+      "is18Plus": false
     }
   ],
   "devlogs": [
