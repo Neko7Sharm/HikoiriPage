@@ -69,10 +69,10 @@ function appData() {
                 this.originalMangas = JSON.parse(storedOrig);
                 this.translationMangas = JSON.parse(storedTrans);
                 this.devlogs = JSON.parse(storedDevlogs);
-            } else {
-                // Fetch from JSON file
+                // Fetch from JSON file with cache buster
                 try {
-                    const response = await fetch('data/manga.json');
+                    const cacheBuster = Date.now();
+                    const response = await fetch(`data/manga.json?t=${cacheBuster}`);
                     const data = await response.json();
                     this.originalMangas = data.originalMangas || [];
                     this.translationMangas = data.translationMangas || [];
