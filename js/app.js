@@ -60,28 +60,27 @@ function appData() {
             // Load Age Verification
             this.isUserAdult = localStorage.getItem('hb_is_adult') === 'true';
 
-            // Load from LocalStorage first for instant view
+            // Try to load from LocalStorage first (for drafts)
             const storedOrig = localStorage.getItem('hb_original');
             const storedTrans = localStorage.getItem('hb_translation');
             const storedDevlogs = localStorage.getItem('hb_devlogs');
 
-            if (storedOrig) this.originalMangas = JSON.parse(storedOrig);
-            if (storedTrans) this.translationMangas = JSON.parse(storedTrans);
-            if (storedDevlogs) this.devlogs = JSON.parse(storedDevlogs);
-
-            // Fetch from JSON file with cache buster to ensure latest data
-            try {
-                const cacheBuster = Date.now();
-                const response = await fetch(`data/manga.json?t=${cacheBuster}`);
-                if (response.ok) {
+            if (storedOrig && storedTrans && storedDevlogs) {
+                this.originalMangas = JSON.parse(storedOrig);
+                this.translationMangas = JSON.parse(storedTrans);
+                this.devlogs = JSON.parse(storedDevlogs);
+                // Fetch from JSON file with cache buster
+                try {
+                    const cacheBuster = Date.now();
+                    const response = await fetch(`data/manga.json?t=${cacheBuster}`);
                     const data = await response.json();
                     this.originalMangas = data.originalMangas || [];
                     this.translationMangas = data.translationMangas || [];
                     this.devlogs = data.devlogs || [];
-                    this.saveData(); // Sync local storage with server data
+                    this.saveData(); // Save to local storage
+                } catch (e) {
+                    console.error('Failed to load data/manga.json', e);
                 }
-            } catch (e) {
-                console.error('Failed to load data/manga.json', e);
             }
         },
 
@@ -310,20 +309,10 @@ function appData() {
             alert('Saved to draft! Don\'t forget to Sync to GitHub.');
         },
 
-        async deleteDevlog(id) {
+        deleteDevlog(id) {
             if (!confirm('Are you sure you want to delete this news?')) return;
             this.devlogs = this.devlogs.filter(l => l.id !== id);
             this.saveData();
-        },
-        async forceRefresh() {
-            if (!confirm('ต้องการล้างแคชและดึงข้อมูลใหม่จาก GitHub ใช่หรือไม่?')) return;
-            localStorage.removeItem('hb_original');
-            localStorage.removeItem('hb_translation');
-            localStorage.removeItem('hb_devlogs');
-            localStorage.removeItem('hb_is_adult');
-            await this.initApp();
-            alert('ล้างแคชและดึงข้อมูลใหม่เรียบร้อยแล้วครับ!');
-            window.location.reload();
         }
     }
 }
