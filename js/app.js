@@ -48,6 +48,7 @@ function appData() {
         },
 
         async initApp() {
+            console.log('App initializing...');
             // Load Admin Session
             const storedAdmin = localStorage.getItem('hb_admin_session');
             if (storedAdmin === 'true') this.isAdmin = true;
@@ -61,13 +62,18 @@ function appData() {
             this.isUserAdult = localStorage.getItem('hb_is_adult') === 'true';
 
             // Load from LocalStorage first for instant view
-            const storedOrig = localStorage.getItem('hb_original');
-            const storedTrans = localStorage.getItem('hb_translation');
-            const storedDevlogs = localStorage.getItem('hb_devlogs');
+            try {
+                const storedOrig = localStorage.getItem('hb_original');
+                const storedTrans = localStorage.getItem('hb_translation');
+                const storedDevlogs = localStorage.getItem('hb_devlogs');
 
-            if (storedOrig) this.originalMangas = JSON.parse(storedOrig);
-            if (storedTrans) this.translationMangas = JSON.parse(storedTrans);
-            if (storedDevlogs) this.devlogs = JSON.parse(storedDevlogs);
+                if (storedOrig && storedOrig !== 'undefined') this.originalMangas = JSON.parse(storedOrig) || [];
+                if (storedTrans && storedTrans !== 'undefined') this.translationMangas = JSON.parse(storedTrans) || [];
+                if (storedDevlogs && storedDevlogs !== 'undefined') this.devlogs = JSON.parse(storedDevlogs) || [];
+                console.log('Loaded from LocalStorage');
+            } catch (e) {
+                console.warn('Failed to parse LocalStorage data', e);
+            }
 
             // Fetch from JSON file with cache buster to ensure latest data
             try {
@@ -75,10 +81,13 @@ function appData() {
                 const response = await fetch(`data/manga.json?t=${cacheBuster}`);
                 if (response.ok) {
                     const data = await response.json();
-                    this.originalMangas = data.originalMangas || [];
-                    this.translationMangas = data.translationMangas || [];
-                    this.devlogs = data.devlogs || [];
+                    console.log('Fetched data successfully:', data);
+                    this.originalMangas = data.originalMangas || this.originalMangas || [];
+                    this.translationMangas = data.translationMangas || this.translationMangas || [];
+                    this.devlogs = data.devlogs || this.devlogs || [];
                     this.saveData(); // Sync local storage with server data
+                } else {
+                    console.error('Fetch failed with status:', response.status);
                 }
             } catch (e) {
                 console.error('Failed to load data/manga.json', e);
