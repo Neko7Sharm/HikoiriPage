@@ -23,7 +23,8 @@
           "name": "Facebook EN",
           "url": "https://www.facebook.com/media/set/?set=a.122106711195181115&type=3"
         }
-      ]
+      ],
+      "is18Plus": false
     },
     {
       "id": 1772180191007,
@@ -48,7 +49,8 @@
           "name": "Facebook EN",
           "url": "https://www.facebook.com/media/set/?set=a.122106709449181115&type=3"
         }
-      ]
+      ],
+      "is18Plus": false
     }
   ],
   "translationMangas": [
