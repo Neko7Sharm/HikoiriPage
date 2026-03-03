@@ -87,7 +87,8 @@
           "name": "Nekopost",
           "url": "https://www.nekopost.net/manga/13224"
         }
-      ]
+      ],
+      "is18Plus": false
     },
     {
       "id": 1772179687494,
@@ -103,7 +104,8 @@
           "name": "Nekopost",
           "url": "https://www.nekopost.net/manga/13185"
         }
-      ]
+      ],
+      "is18Plus": false
     },
     {
       "id": 1,
