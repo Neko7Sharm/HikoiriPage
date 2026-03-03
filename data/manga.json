@@ -54,14 +54,23 @@
   "translationMangas": [
     {
       "id": 1772569327177,
-      "title": "ab",
-      "cover": "a",
-      "status": "a",
-      "role": "a",
+      "title": "Osananajimi wo Erabanai Yatsu wa Kasu da!",
+      "cover": "https://booth.pximg.net/930fcfe0-c564-4e9c-a7cc-49a603587bbb/i/7997839/b157155f-c04c-4958-b2b4-f5e5145ee725_base_resized.jpg",
+      "status": "On-going",
+      "role": "Ch.1",
       "langs": [
         "TH"
       ],
-      "links": [],
+      "links": [
+        {
+          "name": "Nekopost",
+          "url": "a"
+        },
+        {
+          "name": "Mangadex",
+          "url": "b"
+        }
+      ],
       "is18Plus": true
     },
     {
