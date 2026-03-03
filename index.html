@@ -330,6 +330,10 @@
                         value="TH" class="rounded text-pink-500"> Thai</label>
                     <label class="flex items-center gap-2 text-sm"><input type="checkbox" x-model="formManga.langs"
                         value="EN" class="rounded text-pink-500"> English</label>
+                    <label class="flex items-center gap-2 text-sm ml-4 font-bold text-red-500">
+                      <input type="checkbox" x-model="formManga.is18Plus" class="rounded text-red-500"> 18+ Content
+                    </label>
+
                   </div>
                 </div>
 
@@ -393,6 +397,10 @@
                         value="TH" class="rounded text-pink-500"> Thai</label>
                     <label class="flex items-center gap-2 text-sm"><input type="checkbox" x-model="formManga.langs"
                         value="EN" class="rounded text-pink-500"> English</label>
+                    <label class="flex items-center gap-2 text-sm ml-4 font-bold text-red-500">
+                      <input type="checkbox" x-model="formManga.is18Plus" class="rounded text-red-500"> 18+ Content
+                    </label>
+
                   </div>
                 </div>
 
@@ -636,6 +644,31 @@
             class="flex-1 py-2 bg-pink-500 text-white font-bold rounded-xl hover:bg-pink-600">Login</button>
         </div>
         <p x-show="loginError" class="text-red-500 text-xs text-center mt-2">Incorrect Password</p>
+      </div>
+    </div>
+
+    <!-- Age Verification Modal -->
+    <div x-show="showAgeModal" x-cloak
+      class="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
+      x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100">
+      <div class="bg-white rounded-3xl p-8 w-full max-w-md shadow-2xl text-center">
+        <div class="w-16 h-16 bg-red-100 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span class="text-2xl font-black">18+</span>
+        </div>
+        <h3 class="font-bold text-2xl text-gray-800 mb-2">Age Verification</h3>
+        <p class="text-gray-500 mb-8">This content is intended for mature audiences only. Please confirm that you are at
+          least 18 years of age.</p>
+        <div class="flex flex-col gap-3">
+          <button @click="confirmAge()"
+            class="w-full py-4 bg-red-500 text-white font-bold rounded-2xl hover:bg-red-600 transition-colors shadow-lg">
+            I am 18 or older
+          </button>
+          <button @click="showAgeModal = false; pendingManga = null"
+            class="w-full py-2 text-gray-400 font-bold hover:text-gray-600 transition-colors">
+            Exit
+          </button>
+        </div>
       </div>
     </div>
 
