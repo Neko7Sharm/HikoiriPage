@@ -55,6 +55,27 @@
   ],
   "translationMangas": [
     {
+      "id": 1772686795699,
+      "title": "TS Tensei shitemasaka no sabu",
+      "cover": "https://static.comix.to/3d21/i/6/97/68e08db93cd22.jpg",
+      "status": "Coming soon",
+      "role": "Coming soon",
+      "langs": [
+        "TH"
+      ],
+      "links": [
+        {
+          "name": "Nekopost(coming soon)",
+          "url": "a"
+        },
+        {
+          "name": "Nekopost(coming soon)",
+          "url": "d"
+        }
+      ],
+      "is18Plus": true
+    },
+    {
       "id": 1772569327177,
       "title": "Mahou Shoujo ni Yasashii Gal",
       "cover": "https://www.osemocphoto.com/collectManga/16522/media/cover_83479.jpg",
@@ -69,7 +90,7 @@
           "url": "a"
         },
         {
-          "name": "Nekopost(coming soon)",
+          "name": "Mangadex(coming soon)",
           "url": "https://mangadex.org/title/c4d26174-11a7-4a01-b0b3-520738d3253a/mahou-shoujo-ni-yasashii-gal"
         }
       ],
