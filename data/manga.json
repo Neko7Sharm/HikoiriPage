@@ -3,7 +3,7 @@
     {
       "id": 1772180842454,
       "title": "Umamusume with Hikoiri",
-      "cover": "https://scontent.fbkk23-1.fna.fbcdn.net/v/t39.30808-6/606045203_122106710487181115_7319189526437827234_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=dd6889&_nc_ohc=aQaF2siWVkAQ7kNvwHvFwg_&_nc_oc=Adn7PXuS3-Ys4_SwweRKco_5V-PGaUO3-RgsQvr8jXDAzRAeRq__HQa1wJRVDTkGUA4&_nc_zt=23&_nc_ht=scontent.fbkk23-1.fna&_nc_gid=2-U6pIaETIwMQho3pV6KbQ&_nc_ss=8&oh=00_AfwaPnKsX6sLNEiIoqX3pH4QtdYuG4ZHQgbzbdh5k0vBKg&oe=69AEF0E3",
+      "cover": "https://scontent.fbkk23-1.fna.fbcdn.net/v/t39.30808-6/606045203_122106710487181115_7319189526437827234_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=dd6889&_nc_ohc=yrXK9ifysKkQ7kNvwE1emVd&_nc_oc=AdnNa_Ehq2Jnu9wF8W-3klgnoclCPkHyurUN87m3WyhPfsh7Z9MUldZZ34fKuMW61Ow&_nc_zt=23&_nc_ht=scontent.fbkk23-1.fna&_nc_gid=MIqU0bWIkrwSRcJCI5krfg&oh=00_AfsmzeVk4TUZbY_Z0RdcuINSsRmB2Ixf0RQSp1nt-DCYaQ&oe=69A74023",
       "status": "Ch.6",
       "role": "On going",
       "langs": [
@@ -57,7 +57,7 @@
     {
       "id": 1772569327177,
       "title": "Mahou Shoujo ni Yasashii Gal",
-      "cover": "https://myanimelist.net/images/manga/1/338743.jpg",
+      "cover": "https://www.osemocphoto.com/collectManga/16522/media/cover_83479.jpg",
       "status": "On-going",
       "role": "Ch.1",
       "langs": [
@@ -70,7 +70,7 @@
         },
         {
           "name": "Mangadex",
-          "url": "b"
+          "url": "https://mangadex.org/title/c4d26174-11a7-4a01-b0b3-520738d3253a/mahou-shoujo-ni-yasashii-gal"
         }
       ],
       "is18Plus": false
@@ -128,6 +128,13 @@
     }
   ],
   "devlogs": [
+    {
+      "id": 1772684428268,
+      "title": "กลับมาแล้ว",
+      "content": "กลับมาแปลแล้วนะสามารถส่งรีเควสว่าให้\nแปลอะไรอะไรได้แล้วนะ ส่วนมังงะออริจินอลจะลงในเร็วๆนี้",
+      "category": "Update",
+      "date": "2026-03-05"
+    },
     {
       "id": 1772169588200,
       "title": "drop all previously translated",
