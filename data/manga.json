@@ -90,7 +90,7 @@
           "url": "a"
         },
         {
-          "name": "Mangadex(coming soon)",
+          "name": "Mangadex",
           "url": "https://mangadex.org/title/c4d26174-11a7-4a01-b0b3-520738d3253a/mahou-shoujo-ni-yasashii-gal"
         }
       ],
@@ -149,6 +149,13 @@
     }
   ],
   "devlogs": [
+    {
+      "id": 1772756635762,
+      "title": "Mangadex ได้รับการอนุญาติแล้ว",
+      "content": "ลงงานแปล Mangadex ได้แล้วนะ",
+      "category": "Update",
+      "date": "2026-03-06"
+    },
     {
       "id": 1772684428268,
       "title": "กลับมาแล้ว",
