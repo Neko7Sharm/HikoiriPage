@@ -55,6 +55,23 @@
   ],
   "translationMangas": [
     {
+      "id": 1773293535702,
+      "title": "Tensei Shitara Mura Musume Datta",
+      "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG_viSCeK-InChOT8LNJU_i58orEqDK2zjMQ&s",
+      "status": "On-going",
+      "role": "Ch.1",
+      "langs": [
+        "TH"
+      ],
+      "links": [
+        {
+          "name": "Mangadex",
+          "url": "https://mangadex.org/title/228a5457-7da0-432a-85f4-e011877230a1/tensei-shitara-mura-musume-datta?tab=chapters"
+        }
+      ],
+      "is18Plus": false
+    },
+    {
       "id": 1772686795699,
       "title": "TS Tensei shitemasaka no sabu",
       "cover": "https://static.comix.to/3d21/i/6/97/68e08db93cd22.jpg",
@@ -78,7 +95,7 @@
     {
       "id": 1772569327177,
       "title": "Mahou Shoujo ni Yasashii Gal",
-      "cover": "https://scontent.fbkk23-1.fna.fbcdn.net/v/t39.30808-6/646026673_1350265767119065_3489591729324518596_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=dd6889&_nc_ohc=69mSjK6yuxkQ7kNvwFdekfn&_nc_oc=AdmnIcPsYahYMQKlF1WiY5vzUI_24_tznCPZzCQ2ElGxxehKyNMAkCjpPwV5vwk75b8&_nc_zt=23&_nc_ht=scontent.fbkk23-1.fna&_nc_gid=G7PFyRR-bATvcopbwQ4wvQ&_nc_ss=8&oh=00_AfwZ8DRVDTUofvwcyIj0VuOy-vXYlfGboKT7RD2Isgmqrg&oe=69B10171",
+      "cover": "https://scontent.fbkk23-1.fna.fbcdn.net/v/t39.30808-6/646026673_1350265767119065_3489591729324518596_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=dd6889&_nc_ohc=KRxu2jpOKQIQ7kNvwH6HbiV&_nc_oc=AdlBPIEhmjwOEQysaK0QV_zd_NXkIYfVMCHFJEL3J4PhC3hlghT4wHEzhTehQTEox7k&_nc_zt=23&_nc_ht=scontent.fbkk23-1.fna&_nc_gid=3jeQmBUEX9SYKvQPadgxNg&_nc_ss=8&oh=00_AfyGxUYpFCjfoLrHspUxZHv1HQBs6bjV1bex4y5y8FWA0A&oe=69B80971",
       "status": "On-going",
       "role": "Ch.1",
       "langs": [
@@ -129,7 +146,7 @@
     {
       "id": 1,
       "title": "Gangan Nyoui ga Mashite Iku Las Boss Sen no Healer-chan",
-      "cover": "https://scontent.fbkk23-1.fna.fbcdn.net/v/t39.30808-6/480672980_1045880144224297_656918578674194208_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=dd6889&_nc_ohc=DAKnKQ-Q5WkQ7kNvwHyq27s&_nc_oc=AdnhRiEkdh6fyysPxFSbJBT9e6XZCKFKWoLX9N2imTq3xedJcHEAwBoq8TeKu9b9IME&_nc_zt=23&_nc_ht=scontent.fbkk23-1.fna&_nc_gid=qd-ft1BUfSiXqTLZgqKQ_w&_nc_ss=8&oh=00_AfxJ4RTItVcevQ-KrPnnZ5Sq3ETkcgVJjWK3txtPgAycGQ&oe=69AD27C8",
+      "cover": "https://scontent.fbkk23-1.fna.fbcdn.net/v/t39.30808-6/480672980_1045880144224297_656918578674194208_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=dd6889&_nc_ohc=O2wZ1BuosXoQ7kNvwGlz0Nl&_nc_oc=AdkTNXTqHs_jpYvu6SGL8iIOKvApkWOQiXRC4gaARd20vcqYvLetVUPKZ0-XV_Gj0Pc&_nc_zt=23&_nc_ht=scontent.fbkk23-1.fna&_nc_gid=NrP-CuaCn-VsRGgWbx6CvQ&_nc_ss=8&oh=00_AfzhE9WVL-XuJ8ACae5VKV7-_hmFHZ8dtTBCy-prl1IFAA&oe=69B82448",
       "status": "complete",
       "role": "One-Shot",
       "langs": [
